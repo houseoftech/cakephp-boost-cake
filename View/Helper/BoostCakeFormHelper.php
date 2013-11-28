@@ -48,6 +48,10 @@ class BoostCakeFormHelper extends FormHelper {
  */
 	public function create($model = null, $options = array()) {
 		if ($bootstrapVersion = Configure::read('BoostCake.bootstrap_version')) {
+			if (is_array($model) && empty($options)) {
+				$options = $model;
+				$model = null;
+			}
 			if (!isset($options['class'])) {
 				$class = 'default';
 			} else {
