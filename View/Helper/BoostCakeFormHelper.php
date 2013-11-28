@@ -48,11 +48,21 @@ class BoostCakeFormHelper extends FormHelper {
  */
 	public function create($model = null, $options = array()) {
 		if ($bootstrapVersion = Configure::read('BoostCake.bootstrap_version')) {
+			$bootstrapClasses = array_keys(Configure::read("BoostCake.inputDefaults.$bootstrapVersion"));
 			if (!isset($options['class'])) {
-				$class = 'default';
+				$formClasses = array('default');
 			} else {
-				$class = $options['class'];
+				$formClasses = explode(' ', $options['class']);
 			}
+			$formClasses = array_reverse($formClasses);
+			$formClasses[] = 'default';
+			foreach($formClasses as $formClass) {
+				if (in_array($formClass, $bootstrapClasses)) {
+					$class = $formClass;
+					break;
+				}
+			}
+			
 			if ($inputDefaults = Configure::read("BoostCake.inputDefaults.$bootstrapVersion.$class")) {
 				$options = Hash::merge(
 					array(
@@ -174,6 +184,7 @@ class BoostCakeFormHelper extends FormHelper {
 					$label[1] . '$1 ' . $label[2],
 					$html
 				);
+				$html = str_replace('form-control', '', $html);
 			}
 			if (isset($options['before'])) {
 				$html = str_replace('%before%', $options['before'], $html);
