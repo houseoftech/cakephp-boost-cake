@@ -190,7 +190,7 @@ class BoostCakePaginatorHelper extends PaginatorHelper {
 			array('class' => 'disabled')
 		);
 	}
-
+	
 /**
  * Taken from Cake PaginatorHelper, extended to apply active class automatically
  * 
