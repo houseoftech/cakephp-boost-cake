@@ -144,7 +144,7 @@ class BoostCakeFormHelper extends FormHelper {
 			'errorClass' => 'has-error error'
 		);
 		
-		if (isset($options['label']) && !is_array($options['label'])) {
+		if (isset($options['label']) && !is_array($options['label']) && $options['label'] !== false) {
 			$labelText = $options['label'];
 			$options['label'] = array('text' => $labelText);
 		}
