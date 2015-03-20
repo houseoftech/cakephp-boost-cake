@@ -1,5 +1,5 @@
 {
-    "name": "slywalker/boost_cake",
+    "name": "houseoftech/cakephp-boost-cake",
     "type": "cakephp-plugin",
     "description": "BoostCake is a plugin for CakePHP using Bootstrap",
     "keywords": [
