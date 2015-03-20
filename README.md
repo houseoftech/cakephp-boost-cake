@@ -1,10 +1,10 @@
 # BoostCake
 
-[![Build Status](https://travis-ci.org/slywalker/cakephp-plugin-boost_cake.png)](https://travis-ci.org/slywalker/cakephp-plugin-boost_cake)
-[![Total Downloads](https://poser.pugx.org/slywalker/boost_cake/d/total.png)](https://packagist.org/packages/slywalker/boost_cake)
-[![Latest Stable Version](https://poser.pugx.org/slywalker/boost_cake/v/stable.png)](https://packagist.org/packages/slywalker/boost_cake)
-
 BoostCake is a plugin for CakePHP using Bootstrap
+
+For original version see http://slywalker.github.io/cakephp-plugin-boost_cake/
+
+This version makes some changes to the paginator helper and setting default options when using Form::create(). The differences should not cause any incompatibilities in your project. See a [comparison](https://github.com/slywalker/cakephp-plugin-boost_cake/compare/master...houseoftech:master) for more details.
 
 * [Bootstrap(2.3.2)](http://getbootstrap.com/2.3.2/)
 * [Bootstrap(3.0.0)](http://getbootstrap.com/)
@@ -20,7 +20,11 @@ Ensure require is present in composer.json. This will install the plugin into Pl
 
 	{
 		"require": {
-			"slywalker/boost_cake": "*"
+			"houseoftech/cakephp-boost-cake": "*"
+		},
+		"repositories": {
+			"type": "vcs",
+			"url": "https://github.com/houseoftech/cakephp-boost-cake.git"
 		}
 	}
 
@@ -28,7 +32,7 @@ Ensure require is present in composer.json. This will install the plugin into Pl
 
 You need to enable the plugin in your app/Config/bootstrap.php file:
 
-`CakePlugin::load('BoostCake');`
+`CakePlugin::load('BoostCake', array('bootstrap' => true));`
 
 If you are already using `CakePlugin::loadAll();`, then this is not necessary.
 
@@ -52,7 +56,7 @@ If you want to simplify the options, you can develop WrapBoostCake plugin.
 * Adds content before and after `input`
 * Adds error class in outer `div`
 * Changes pagination tags
-* Changes SessionHelper::flash()`s template
+* Changes SessionHelper::flash()'s template
 
 ## License
 
