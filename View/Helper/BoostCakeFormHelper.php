@@ -85,7 +85,8 @@ class BoostCakeFormHelper extends FormHelper {
 
 /**
  * Overwrite FormHelper::input()
- * Generates a form input element complete with label and wrapper div
+ *
+ * - Generates a form input element complete with label and wrapper div
  *
  * ### Options
  *
@@ -149,6 +150,12 @@ class BoostCakeFormHelper extends FormHelper {
 			$options['label'] = array('text' => $labelText);
 		}
 
+		if (isset($options['label']) && is_string($options['label'])) {
+			$options['label'] = array(
+				'text' => $options['label']
+			);
+		}
+
 		$options = Hash::merge(
 			$default,
 			$this->_inputDefaults,
@@ -206,10 +213,11 @@ class BoostCakeFormHelper extends FormHelper {
 
 /**
  * Overwrite FormHelper::_divOptions()
- * Generate inner and outer div options
- * Generate div options for input
  *
- * @param array $options
+ * - Generate inner and outer div options
+ * - Generate div options for input
+ *
+ * @param array $options Options list.
  * @return array
  */
 	protected function _divOptions($options) {
@@ -232,11 +240,12 @@ class BoostCakeFormHelper extends FormHelper {
 
 /**
  * Overwrite FormHelper::_getInput()
- * Wrap `<div>` input element
- * Generates an input element
  *
- * @param type $args
- * @return type
+ * - Wrap `<div>` input element
+ * - Generates an input element
+ *
+ * @param array $args The options for the input element
+ * @return string The generated input element
  */
 	protected function _getInput($args) {
 		$input = parent::_getInput($args);
@@ -270,13 +279,14 @@ class BoostCakeFormHelper extends FormHelper {
 
 /**
  * Overwrite FormHelper::_selectOptions()
- * If $attributes['style'] is `<input type="checkbox">` then replace `<label>` position
- * Returns an array of formatted OPTION/OPTGROUP elements
  *
- * @param array $elements
- * @param array $parents
- * @param boolean $showParents
- * @param array $attributes
+ * - If $attributes['style'] is `<input type="checkbox">` then replace `<label>` position
+ * - Returns an array of formatted OPTION/OPTGROUP elements
+ *
+ * @param array $elements Elements to format.
+ * @param array $parents Parents for OPTGROUP.
+ * @param bool $showParents Whether to show parents.
+ * @param array $attributes HTML attributes.
  * @return array
  */
 	protected function _selectOptions($elements = array(), $parents = array(), $showParents = null, $attributes = array()) {
