@@ -22,10 +22,12 @@ Ensure require is present in composer.json. This will install the plugin into Pl
 		"require": {
 			"houseoftech/cakephp-boost-cake": "*"
 		},
-		"repositories": {
-			"type": "vcs",
-			"url": "https://github.com/houseoftech/cakephp-boost-cake.git"
-		}
+		"repositories": [
+			{
+				"type": "vcs",
+				"url": "https://github.com/houseoftech/cakephp-boost-cake"
+			}
+		]
 	}
 
 ### Enable plugin
