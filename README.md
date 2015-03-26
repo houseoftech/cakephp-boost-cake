@@ -18,17 +18,13 @@ This version makes some changes to the paginator helper and setting default opti
 
 Ensure require is present in composer.json. This will install the plugin into Plugin/BoostCake:
 
+````
 	{
 		"require": {
 			"houseoftech/cakephp-boost-cake": "*"
-		},
-		"repositories": [
-			{
-				"type": "vcs",
-				"url": "https://github.com/houseoftech/cakephp-boost-cake"
-			}
-		]
+		}
 	}
+````
 
 ### Enable plugin
 
