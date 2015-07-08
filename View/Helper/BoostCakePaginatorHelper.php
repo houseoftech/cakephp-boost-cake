@@ -277,16 +277,19 @@ class BoostCakePaginatorHelper extends PaginatorHelper {
 		$named = $this->params['named'];
 		unset($named['sort'], $named['direction'], $named['page']);
 		
-		$match = false;
-		if (count($url) == 1) {
-			$namedParam = key($url);
-			if (($url[$namedParam] === null && !isset($named[$namedParam])) || (isset($named[$namedParam]) && $named[$namedParam] == $url[$namedParam])) {
-				$match = true;
+
+		if (count($url)){
+			//add a null value to named array if it does not exists and is null in url
+			foreach ($url as $key => $value) {
+				if (is_null($value) && !isset($named[$key])){
+					$named[$key] = $url[$key];
+				}
 			}
-		}
-		
-		if (count($url)) {
-			if ($named == $url || $match) {
+
+			//check if the url array is contained entirely within the named array
+			$match = count($url) == count(array_intersect_assoc($url, $named));
+
+			if ($match){
 				if (isset($options['class']) && !empty($options['class'])) {
 					$options['class'] .= ' active btn-success';
 				} else {
